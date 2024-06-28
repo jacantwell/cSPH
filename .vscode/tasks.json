@@ -1,0 +1,46 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "C/C++: gcc build active file",
+			"command": "/usr/bin/gcc",
+			"args": [
+				"-std=c17",
+				"-fdiagnostics-color=always",
+				"-Wall",
+				"-g",
+				"-I${workspaceFolder}/dependencies/include",
+				"-L${workspaceFolder}/dependencies/lib",
+				"-Wl,-rpath,${workspaceFolder}/dependencies/lib", 
+				"${workspaceFolder}/*.c",
+				// "${workspaceFolder}/dependencies/library/libglfw.3.dylib",
+				"-o",
+				"${workspaceFolder}/app",
+				"-lglfw.3", // Use -lglfw instead of specifying the dylib directly
+				"-framework",
+				"OpenGL",
+				"-framework",
+				"Cocoa",
+				"-framework",
+				"IOKit",
+				"-framework",
+				"CoreVideo",
+				"-framework",
+				"CoreFoundation",
+				"-Wno-deprecated",
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "compiler: /usr/bin/gcc"
+		}
+	]
+}
